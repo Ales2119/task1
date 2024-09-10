@@ -128,4 +128,5 @@ example, in Debian/Ubuntu please type inthe terminal:
 sudo apt-get install git
 If you need to install Git from source, you can get it from git-scm.com/downloads.
 An excellent Git course can be found in the great Pro Git book by Scott Chacon and Ben Straub. 
-The book is available online for free at www.git-scm.com/book
+The book is available online for free at git-scm.com/book
+
