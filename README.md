@@ -1,132 +1,49 @@
 # task1
 
-01 Git configuration
-git config --global 
-user.name “Your Name” Set the name that will be attached to your commits and tags.
-git config --global 
-user.email “you@example.
-com”
-Set the e-mail address that will be attached to your commits 
-and tags.
-git config --global 
-color.ui auto Enable some colorization of Git output.
+Getting & Creating Projects     Command	Description
+git init	Initialize a local Git repository
+git clone ssh://git@github.com/[username]/[repository-name].git	Create a local copy of a remote repository
 
-02 Starting a project
+Basic Snapshotting      Command	Description
 
-git init [project name]
-Create a new local repository in the current directory. If 
-[project name] is provided, Git will create a new directory 
-named [project name] and will initialize a repository inside it.
-git clone <project url> Downloads a project with the entire history from the remote 
-repository.
-git rm [file] Remove file from working directory and staging area.
+git status	Check status
+git add [file-name.txt]	Add a file to the staging area
+git add -A	Add all new and changed files to the staging area
+git commit -m "[commit message]"	Commit changes
+git rm -r [file-name.txt]	Remove a file (or folder)
 
-03 Day-to-day work
+Branching & Merging         Command	Description
 
-git status
-Displays the status of your working directory. Options include 
-new, staged, and modified files. It will retrieve branch name, 
-current commit identifier, and changes pending commit.
-git add [file]
-Add a file to the staging area. Use. in place of the full file path 
-to add all changed files from the current directory down into 
-the directory tree.
-git diff [file] Show changes between working directory and staging area.
-git diff --staged [file] Shows any changes between the staging area and the 
-repository.
-git checkout -- [file] Discard changes in working directory. This operation is 
-unrecoverable.
-git reset path... Revert some paths in the index (or the whole index) to their 
-state in HEAD.
-git commit Create a new commit from changes added to the staging area.
+git branch	List branches (the asterisk denotes the current branch)
+git branch -a	List all branches (local and remote)
+git branch [branch name]	Create a new branch
+git branch -d [branch name]	Delete a branch
+git push origin --delete [branch name]	Delete a remote branch
+git checkout -b [branch name]	Create a new branch and switch to it
+git checkout -b [branch name] origin/[branch name]	Clone a remote branch and switch to it
+git branch -m [old branch name] [new branch name]	Rename a local branch
+git checkout [branch name]	Switch to a branch
+git checkout -	Switch to the branch last checked out
+git checkout -- [file-name.txt]	Discard changes to a file
+git merge [branch name]	Merge a branch into the active branch
+git merge [source branch] [target branch]	Merge a branch into a target branch
+git stash	Stash changes in a dirty working directory
+git stash clear	Remove all stashed entries
 
-04 Storing your work
+Sharing & Updating Projects        Command	Description
 
-git stash Put current changes in your working directory into stash for 
-later use.
-git stash pop Apply stored stash content into working directory, and clear 
-stash.
-git stash drop Delete a specific stash from all your previous stashes.
+git push origin [branch name]	Push a branch to your remote repository
+git push -u origin [branch name]	Push changes to remote repository (and remember the branch)
+git push	Push changes to remote repository (remembered branch)
+git push origin --delete [branch name]	Delete a remote branch
+git pull	Update local repository to the newest commit
+git pull origin [branch name]	Pull changes from remote repository
+git remote add origin ssh://git@github.com/[username]/[repository-name].git	Add a remote repository
+git remote set-url origin ssh://git@github.com/[username]/[repository-name].git	Set a repository's origin branch to SSH
 
-05 Git branching model
+Inspection & Comparison     Command	Description
 
-git branch [-a] List all local branches in repository. With -a: show all branches 
-(with remote).
-git branch [branch_name] Create new branch, referencing the current HEAD.
-git rebase [branch_name]
-Apply commits of the current working branch and apply them 
-to the HEAD of [branch] to make the history of your branch 
-more linear.
-git checkout [-b]
-[branch_name]
-Switch working directory to the specified branch. With -b: Git 
-will create the specified branch if it does not exist.
-git merge [branch_name] Join specified [branch_name] branch into your current branch 
-(the one you are on currently).
-git branch -d [branch_
-name]
-Remove selected branch, if it is already merged into any other. 
--D instead of -d forces deletion.
-
-06 Inspect history
-
-git log [-n count] List commit history of current branch. -n count limits list to last 
-n commits.
-git log --oneline 
---graph --decorate
-An overview with reference labels and history graph. One 
-commit per line.
-git log ref . List commits that are present on the current branch and not 
-merged into ref. A ref can be a branch name or a tag name.
-git log .ref List commit that are present on ref and not merged into current
-branch.
-git reflog List operations (e.g. checkouts or commits) made on local 
-repository.
-
-07 Tagging commits
-
-git tag List all tags.
-git tag [name] 
-[commit sha]
-Create a tag reference named name for current commit. Add 
-commit sha to tag a specific commit instead of current one.
-git tag -a [name] 
-[commit sha] Create a tag object named name for current commit.
-git tag -d [name] Remove a tag from local repository.
-
-08 Reverting changes
-
-git reset [--hard] 
-[target reference]
-Switches the current branch to the target reference, leaving
-a difference as an uncommitted change. When --hard is used,
-all changes are discarded. It's easy to lose uncommitted 
-changes with --hard.
-git revert [commit sha] Create a new commit, reverting changes from the specified 
-commit. It generates an inversion of changes.
-
-09 Synchronizing repositories
-
-git fetch [remote] Fetch changes from the remote, but not update tracking 
-branches.
-git fetch --prune 
-[remote]
-Delete remote Refs that were removed from the remote 
-repository.
-git pull [remote] Fetch changes from the remote and merge current branch with 
-its upstream.
-git push [--tags] 
-[remote] Push local changes to the remote. Use --tags to push tags.
-git push -u [remote] 
-[branch]
-Push local branch to remote repository. Set its copy as an 
-upstream
-
-10 Git installation
-For GNU/Linux distributions, Git should be available in the standard system repository. For 
-example, in Debian/Ubuntu please type inthe terminal:
-sudo apt-get install git
-If you need to install Git from source, you can get it from git-scm.com/downloads.
-An excellent Git course can be found in the great Pro Git book by Scott Chacon and Ben Straub. 
-The book is available online for free at git-scm.com/book
-
+git log	View changes
+git log --summary	View changes (detailed)
+git log --oneline	View changes (briefly)
+git diff [source branch] [target branch]	Preview changes before merging
